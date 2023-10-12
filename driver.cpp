@@ -30,7 +30,8 @@ int main()
 	County* newCounty;
 
 	if(file.good()) {
-	while(getline(file, line, ','))
+		int n=0;
+	while(getline(file, line, ',')||n!=10)
 	{
 		temp.clear();
 		temp.str(line);
