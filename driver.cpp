@@ -1,9 +1,18 @@
+/*
+	Title:  driver.cpp
+	Author:  Tyce Webster & Isaac Essex
+    Course: CSC 1310-001
+	Date:  10/12/2023
+    Due: 10/12/2023
+	Purpose: Read and organize data from a file into a doubly-linked list.
+
+*/
 #include<fstream>
 #include<iostream>
 #include<string>
 #include<sstream>
 #include "County.h"
-//include your list header here------------------------------------------------------------------------
+#include "List.h"
 
 using namespace std;
 
@@ -17,7 +26,7 @@ int main()
 	file.open("counties_ten.csv", ios::in);
 
 	//create a new list of county pointers ------------------------------------------------------------------
-
+	List<County> *countyList=new List<County>();
 	County* newCounty;
 
 	if(file.good()) {
@@ -40,12 +49,15 @@ int main()
 
 		newCounty = new County(index, county, state, pop);
 		//append newCounty to your list-----------------------------------------------------------------------------------
+		countyList->append(*newCounty);
 	}}
 
 	file.close();
 
 	//call mergesort---------------------------------------------------------------------------------------------
 	//print the list-----------------------------------------------------------------------------------------------------
-
+	countyList->mergesort();
+	cout<<"merge";
+	countyList->print();
 	return 0;
 }
