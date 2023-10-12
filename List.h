@@ -49,7 +49,7 @@ void List<T>::print(ListNode* nodePtr) //Parameter moves through the list
     //While nodePtr points to a node, traverse the list
     while(nodePtr)
     {
-        cout << nodePtr->value << endl; //Displays the value of a node
+        cout << nodePtr->value->getPopulation() << endl; //Displays the value of a node
         nodePtr = nodePtr->next; //Sets the nodePtr to the next node of the list
     }
 }
@@ -82,6 +82,7 @@ template <typename T>
 void List<T>::append(T newValue)
 {
     ListNode *newNode; //Points to a new node
+    ListNode *temp;
 
     //Allocates newNode and stores newValue there
     newNode = new ListNode;
@@ -89,10 +90,16 @@ void List<T>::append(T newValue)
     newNode->next = NULL;
     newNode->prev = NULL;
 
+    //Allocates temp and stores newValue there
+    temp = new ListNode;
+    temp->value=&newValue;
+    temp->next = NULL;
+    temp->prev = NULL;
+
     //If there are no nodes in the list, then make newNode the first node
     if(!head)
     {
-        head = newNode;
+        head=temp;
         tail = newNode;
     }
     else //Inserts newNode at the end of the list
