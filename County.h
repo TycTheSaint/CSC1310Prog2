@@ -13,7 +13,6 @@ class County
 		string state;
 		int population;
 	public:
-		//County();
         County(int, string, string, int);
         int getIndex();
 		void setIndex(int);

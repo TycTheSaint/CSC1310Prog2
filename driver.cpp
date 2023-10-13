@@ -26,40 +26,39 @@ int main()
 	file.open("counties_ten.csv", ios::in);
 
 	//create a new list of county pointers ------------------------------------------------------------------
-	List<County> *countyList=new List<County>();
+	List<County*> countyList;
 	County* newCounty;
 
-	if(file.good()) {
-		int n=0;
-	while(getline(file, line, ',')||n!=10)
+	if(file.good())
 	{
-		temp.clear();
-		temp.str(line);
-		temp >> index;
+		while(getline(file, line, ','))
+		{
+			temp.clear();
+			temp.str(line);
+			temp >> index;
 
-		getline(file, line, ',');
-		county = line;
+			getline(file, line, ',');
+			county = line;
 
-		getline(file, line, ',');
-		state = line;
+			getline(file, line, ',');
+			state = line;
 
-		getline(file, line, '\n');
-		temp.clear();
-		temp.str(line);
-		temp >> pop;
+			getline(file, line, '\n');
+			temp.clear();
+			temp.str(line);
+			temp >> pop;
 
-		newCounty = new County(index, county, state, pop);
-		//append newCounty to your list-----------------------------------------------------------------------------------
-		countyList->append(newCounty);
-	}}
-	countyList->print();
+			newCounty = new County(index, county, state, pop);
+			//append newCounty to your list-----------------------------------------------------------------------------------
+			countyList.append(newCounty);
+		}
+	}
 
 	file.close();
 
 	//call mergesort---------------------------------------------------------------------------------------------
 	//print the list-----------------------------------------------------------------------------------------------------
-	countyList->mergesort();
-	cout<<"merge\n";
-	countyList->print();
+	countyList.mergesort();
+	countyList.print();
 	return 0;
-}//ghsimpson42
+}

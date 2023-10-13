@@ -2,14 +2,6 @@
 
 using namespace std;
 
-/*County::County(){
-	index = 0;
-	name = "n";
-	state = "s";
-	population = 0;
-
-}*/
-
 County::County(int i, string n, string s, int p)
 {
 	index = i;
